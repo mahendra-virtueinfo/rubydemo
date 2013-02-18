@@ -1,0 +1,27 @@
+<h1>Listing solutions</h3>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>description</th>
+        <th>price</th>
+    </tr>
+
+<% @solutions.each do |solution| %>
+<tr>
+    <td><%= solution.name %></td>
+    <td><%= solution.description.html_safe %></td>
+    <td><%= solution.price %></td>
+    <td><%= link_to "Show", solution %></td>
+    <td><%= link_to "Edit", edit_solution_path(solution) %></td>
+    <td><%= link_to "Delete", solution, method: :delete, data: { confirm: "Are you sure?" } %></td>
+</tr>
+<% end %>
+
+    <tr>
+        <td colspan="5"><%= render :partial => "layouts/pagination", :locals => {:form => @solution} %>
+</td>
+    </tr>
+</table>
+
+<%= link_to "New", new_solution_url %>

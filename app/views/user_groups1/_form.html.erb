@@ -1,0 +1,10 @@
+<%= form.fields_for :user_group do |user_group_form| %>
+
+<div class="field">
+<%= form.fields_for :group,user_group_form  do |group_fields| %>
+
+<%= group_fields.label :name %><br />
+<%= group_fields.select :name, Group.all.collect {|p| [ p.name, p.id ] }, { :include_blank => true }, :multiple => true %><br /><br />
+</div>
+<% end %>
+<% end %>

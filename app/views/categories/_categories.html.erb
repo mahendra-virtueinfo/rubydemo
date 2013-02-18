@@ -1,0 +1,19 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th><%= sortable "name" %></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% for category in @categories %>
+    <tr>
+      <td><%= "#{'-' * category.level} #{category.name}" %></td>
+      <td><%= link_to "Edit", edit_category_path(category), :class => 'btn btn-mini' %></td>
+      <td><%= link_to "Destroy", category, :confirm => 'Are you sure?', :method => :delete, :remote => true, :class => 'btn btn-mini btn-danger' %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+<%= will_paginate @categories %>

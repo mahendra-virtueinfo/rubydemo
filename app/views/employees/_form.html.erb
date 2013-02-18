@@ -1,0 +1,28 @@
+<% #@employee.picture.build
+%>
+<%= form_for @employee do |f| %>
+
+<div class="field">
+<%= f.label :name %></br>
+<%= f.text_field :name %>
+
+<% if @employee.errors[:name].any? %>
+    <%= @employee.errors[:name].first %>
+<% end %>
+</div>
+
+<%= f.fields_for :picture do |builder| %>
+<%= render "pictures/form", :f => builder %>
+<% end %>
+<div class="action">
+  <%= f.submit %>
+</div>
+
+<% end %>
+
+<!--<div id="images">-->
+<%= #render :partial => "pictures/form", :locals => {:form => f}, :picture => @employee.picture.build
+%>
+<!--</div>-->
+<%= #add_object_link("New Photo", f, @employee.picture.build, "image", "#images")
+%>

@@ -1,0 +1,10 @@
+<%= @product.name %>
+<%= tag('br') %>
+
+
+<% @product.picture.each do |image| %>
+<%= image_tag image.image(:small) %>
+
+<% end %>
+
+<%= link_to "New", new_product_path %>

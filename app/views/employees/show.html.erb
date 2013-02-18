@@ -1,0 +1,7 @@
+<%= @employee.name %>
+<%= tag('br') %>
+
+
+<%= image_tag @employee.picture.image(:small) %>
+
+<%= link_to "New", new_employee_path %>

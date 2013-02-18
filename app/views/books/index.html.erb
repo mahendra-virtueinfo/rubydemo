@@ -1,0 +1,12 @@
+<%= form_tag books_path, :method => 'get', :id => "books_search", :remote => true do %>
+
+<p>
+<%= text_field_tag :search, params[:search] %>
+<%= submit_tag "Search", :name => nil %>
+</p>
+<div id="books"><%= render 'books' %></div>
+
+<% end %>
+<br />
+
+<%= link_to 'New Book', new_book_path, :class => 'btn btn-primary' %>

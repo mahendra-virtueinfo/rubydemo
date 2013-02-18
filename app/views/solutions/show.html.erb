@@ -1,0 +1,13 @@
+<h1>View solution information</h1>
+
+<b>Name:</b>
+<%= @solution.name %></br>
+
+<b>Description:</b>
+<%= @solution.description.html_safe %></br>
+
+<b>Price:</b>
+<%= @solution.price %></br>
+
+<%= link_to "Edit", edit_solution_path(@solution) %>
+<%= link_to "Back to list", solutions_path %>

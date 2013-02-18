@@ -1,0 +1,28 @@
+<h1>New book</h1>
+
+<%= form_for(:books, :url => url_for(:controller => 'books', :action => 'create')) do |f| %>
+  <% if @books.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @books.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :author %><br />
+    <%= f.text_field :author %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Back', books_path %>

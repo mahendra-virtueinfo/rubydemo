@@ -1,0 +1,30 @@
+
+<% @product.picture.build %>
+<%= form_for @product do |f| %>
+<%= hidden_field_tag :count_id, params[:count_id] ||= 1 %>
+
+<%= f.label :name %></br>
+<%= f.text_field :name %>
+
+<% if @product.errors[:name].any? %>
+    <%= @product.errors[:name].first %>
+<% end %>
+
+
+<div id="photos">
+<%= f.fields_for :picture do |builder| %>
+<% (1..params[:count_id].to_i).each do |c| %>
+<%= render :partial => "pictures/form", :locals => { :f => builder} %>
+<% end %>
+<% end %>
+</div>
+
+<div><%= link_to_add_fields "Add Picture", f, "pictures/form", :picture, "photos", :count_id %></div>
+
+<%= #add_object_link("New Picture", f, "pictures/form", "#photos")
+%>
+<div class="action">
+  <%= f.submit %>
+</div>
+
+<% end %>

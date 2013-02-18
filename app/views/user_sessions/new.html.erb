@@ -1,0 +1,14 @@
+<%= form_for @user_session, :url => user_sessions_path do |f| %>
+<%= f.error_messages %>
+
+Enter your e-mail and password to sign in.
+
+<%= f.label :login %>
+<%= f.text_field :login %>
+
+<%= f.label :password %>
+<%= f.password_field :password %>
+
+<%= f.submit "SIGN IN" %>
+
+<% end %>

@@ -1,0 +1,88 @@
+<div class="control-group">
+    <%= form.label :first_name %><br />
+    <div class="controls">
+        <%= form.text_field :first_name %><br /><br />
+        <% if @user.errors[:first_name].any? %>
+            <%= @user.errors[:first_name].first %><br /><br />
+        <% end %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= form.label :last_name %><br />
+    <div class="controls">
+        <%= form.text_field :last_name %><br /><br />
+        <% if @user.errors[:last_name].any? %>
+            <%= @user.errors[:last_name].first %><br /><br />
+        <% end %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= form.label :gender %><br />
+    <div class="controls">
+        <%= form.enum_select :gender %><br /><br />
+        <% if @user.errors[:gender].any? %>
+            <%= @user.errors[:gender].first %><br /><br />
+        <% end %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= form.label :login %><br />
+    <div class="controls">
+        <%= form.text_field :login, form.object.new_record? ? nil : :readonly => true %><br /><br />
+        <% if @user.errors[:login].any? %>
+            <%= @user.errors[:login].first %><br /><br />
+        <% end %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= form.label :email %><br />
+    <div class="controls">
+        <%= form.text_field :email %><br /><br />
+        <% if @user.errors[:email].any? %>
+            <%= @user.errors[:email].first %><br /><br />
+        <% end %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= form.label :password, form.object.new_record? ? nil : "Change password" %><br />
+    <div class="controls">
+        <%= form.password_field :password %><br /><br />
+        <% if @user.errors[:password].any? %>
+            <%= @user.errors[:password].first %><br /><br />
+        <% end %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= form.label :password_confirmation %><br />
+    <div class="controls">
+        <%= form.password_field :password_confirmation %><br /><br />
+        <% if @user.errors[:password_confirmation].any? %>
+            <%= @user.errors[:password_confirmation].first %><br /><br />
+        <% end %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= form.label :is_active, "Status" %><br />
+    <div class="controls">
+        <%= form.select :is_active, {Active: 1, Inactive: 0} %><br /><br />
+        <% if @user.errors[:is_active].any? %>
+            <%= @user.errors[:is_active].first %><br /><br />
+        <% end %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= form.label :photo %>
+    <div class="controls">
+        <% if not form.object.new_record? %>
+            <% if @user.photo.exists? %>
+                <%= image_tag @user.photo.url(:small), :alt => form.object.login, :title => form.object.login %>
+            <% end %>
+        <% end %>
+        <%= form.file_field :photo %>
+    </div>
+  </div>
+
+
+<%= render :partial => "user_details/form", :locals => {:form => form} %>
+
+<%= render :partial => "user_groups/form", :locals => {:form => form} %>

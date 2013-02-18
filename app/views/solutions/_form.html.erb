@@ -1,0 +1,36 @@
+<%= form_for(@solution) do |f| %>
+
+
+<div class="field">
+<%= f.label :name %><br/>
+<%= f.text_field :name %>
+
+<% if @solution.errors[:name].any? %>
+    <%= @solution.errors[:name].first %>
+<% end %>
+</div>
+
+<div class="field">
+<%= f.label :description %><br/>
+<%= f.text_area :description, :class => 'ckeditor' %>
+
+<% if @solution.errors[:description].any? %>
+    <%= @solution.errors[:description].first %>
+<% end %>
+</div>
+
+
+<div class="field">
+<%= f.label :price %><br/>
+<%= f.text_field :price %>
+
+<% if @solution.errors[:price].any? %>
+    <%= @solution.errors[:price].first %>
+<% end %>
+</div>
+
+<div class="field">
+<%= f.submit %>
+</div>
+
+<% end %>

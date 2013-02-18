@@ -1,0 +1,19 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th><%= sortable "name" %></th>
+    <th></th>
+  </tr>
+  <tbody>
+<%= content_tag_for(:tr, @employees) do |employee| %>
+  <tr>
+    <td><%= employee.name %></td>
+    <td><%= image_tag employee.picture.image(:small) %></td>
+    <td><%= link_to 'Show', employee %></td>
+    <td><%= link_to 'Edit', edit_employee_path(employee), :class => 'btn btn-mini' %></td>
+    <td><%= link_to 'Destroy', employee, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger'  %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+<%= paginate @employees, :remote => true %>

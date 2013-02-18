@@ -1,0 +1,18 @@
+<h1>Customer information</h1>
+
+<b>Name:</b></br>
+<%= @customer.name %></br></br>
+
+<b>Email:</b></br>
+<%= @customer.email %></br></br>
+
+<b>Address:</b></br>
+<%= @customer.address %></br></br>
+
+<b>Phone:</b></br>
+<%= @customer.phone %></br></br>
+
+<b>Street:</b></br>
+<%= @customer.street %></br></br>
+
+<%= link_to "Edit", edit_customer_path(@customer) %> | <%= link_to "Back to list", customers_path %>

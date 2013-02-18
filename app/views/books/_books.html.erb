@@ -1,0 +1,25 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+
+<h1>Listing books <%= "(#{@books.count})" -%> Record</h1>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th><%= sortable "name" %></th>
+    <th><%= sortable "author" %></th>
+  </tr>
+  </thead>
+  <tbody>
+<%= content_tag_for(:tr, @books) do |book| %>
+  <tr>
+    <td><%= book.name %></td>
+    <td><%= book.author %></td>
+    <td><%= link_to 'Show', book %></td>
+    <td><%= link_to 'Edit', edit_book_path(book), :class => 'btn btn-mini' %></td>
+    <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-danger'  %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+<%= paginate @books, :remote => true %>

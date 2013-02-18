@@ -1,0 +1,22 @@
+<%= form.fields_for :user_detail do |user_detail_form| %>
+
+<div class="field">
+<%= user_detail_form.label :address %><br />
+<%= user_detail_form.text_field :address %><br /><br />
+</div>
+
+<div class="field">
+<%= user_detail_form.label :phone %><br />
+<%= user_detail_form.telephone_field :phone %><br /><br />
+</div>
+
+<div class="field">
+<%= user_detail_form.label :facebook_id %><br />
+<%= user_detail_form.text_field :facebook_id %><br /><br />
+</div>
+
+<div class="field">
+<%= user_detail_form.label :twitter_id %><br />
+<%= user_detail_form.text_field :twitter_id %><br /><br />
+</div>
+<% end %>
